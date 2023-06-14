@@ -1,3 +1,4 @@
+#pragma once
 /** Tests if the empty linked list constructor 
  * works properly **/
 void test_Ll_createNewEmpty();
