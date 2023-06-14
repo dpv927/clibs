@@ -1,3 +1,4 @@
+#pragma once
 /* Tests to check if a element is added to the beggining
  * of a list. */
 void test_Ll_addFirst();

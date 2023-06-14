@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../linkedList.h"
+#include "adders.tests.h"
 
 void test_Ll_addFirst() {
   // Create a new empty list
