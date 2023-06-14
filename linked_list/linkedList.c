@@ -142,6 +142,8 @@ void Ll_clear(LinkedList* list) {
 }
 
 int Ll_contains(LinkedList* list, void* value) {
+  if(list->comparator == NULL) { return -1;}
+
 	Node* current = list->head;
 	while (current != NULL) {
 		if (list->comparator(value, current->val) == 0) { return 1; }
