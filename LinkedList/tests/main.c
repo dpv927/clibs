@@ -4,9 +4,7 @@ int main() {
   #include "constructors.tests.h"
   printf("Constructors Tests --------------------\n");
   test_Ll_createNewEmpty();
-  test_Ll_createNewBased();
   test_Ll_createNewComparable();
-  test_Ll_createNewBasedComparable();
 
   #include "adders.tests.h"
   printf("\nAdders Tests ------------------------\n");

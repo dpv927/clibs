@@ -28,21 +28,21 @@ LinkedList* Ll_createNewEmpty(void);
  *
  * @param comparer Pointer to the comparator function that compares two elements.
  * @return Pointer to the new linked list with the specified comparator. */
-LinkedList* Ll_createNewComparable(const int(*comparer)(void*, void*));
+LinkedList* Ll_createNewComparable(int(*comparer)(void*, void*));
 
 /**
  * @brief Adds an element to the beginning of the linked list.
  *
  * @param list Pointer to the linked list.
  * @param value Pointer to the element to be added. **/
-void Ll_addFirst(LinkedList* list, const void* value);
+void Ll_addFirst(LinkedList* list, void* value);
 
 /**
  * @brief Adds an element to the end of the linked list.
  *
  * @param list Pointer to the linked list.
  * @param value Pointer to the element to be added. **/
-void Ll_addLast(LinkedList* list, const void* value);
+void Ll_addLast(LinkedList* list, void* value);
 
 /**
  * @brief Adds an element at a specific position in the linked list.
@@ -50,7 +50,7 @@ void Ll_addLast(LinkedList* list, const void* value);
  * @param list Pointer to the linked list.
  * @param index The index at which the element should be added.
  * @param element Pointer to the element to be added. **/
-void Ll_addAt(LinkedList* list, const uint index, const void* element);
+void Ll_addAt(LinkedList* list, const uint index, void* element);
 
 /**
  * @brief Removes and returns the first element from the linked list.
@@ -86,7 +86,7 @@ void Ll_clear(LinkedList* list);
  * @param list Pointer to the linked list.
  * @param element Pointer to the element to be checked.
  * @return 1 if the element is found, 0 otherwise. **/
-Bool Ll_contains(LinkedList* list, const void* element);
+Bool Ll_contains(LinkedList* list, void* element);
 
 /**
  * @brief Retrieves the element at a specific index in the linked list.
@@ -109,7 +109,7 @@ Bool Ll_isEmpty(LinkedList* list);
  * @param list Pointer to the linked list.
  * @param element Pointer to the element to search for.
  * @return The last index of the element, or -1 if it is not found. **/
-int Ll_lastIndexOf(LinkedList* list, const void* element);
+int Ll_lastIndexOf(LinkedList* list, void* element);
 
 /**
  * @brief Returns the index of the first occurrence of a specific element in the linked list.
@@ -117,7 +117,7 @@ int Ll_lastIndexOf(LinkedList* list, const void* element);
  * @param list Pointer to the linked list.
  * @param element Pointer to the element to search for.
  * @return The index of the element, or -1 if it is not found. **/
-int Ll_indexOf(LinkedList* list, const void* element);
+int Ll_indexOf(LinkedList* list, void* element);
 
 /**
  * @brief Sets the element at a specific index in the linked list.
@@ -126,4 +126,4 @@ int Ll_indexOf(LinkedList* list, const void* element);
  * @param index The index of the element to be set.
  * @param element Pointer to the new element.
  * @return Pointer to the previous element at the specified index. **/
-void* Ll_setElementAt(LinkedList* list, const uint index, const void* element);
+void* Ll_setElementAt(LinkedList* list, const uint index, void* element);

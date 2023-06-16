@@ -12,13 +12,13 @@ LinkedList* Ll_createNewEmpty(void) {
 	return list;
 }
 
-LinkedList* Ll_createNewComparable(const int(*comparer)(void*, void*)) {
+LinkedList* Ll_createNewComparable(int(*comparer)(void*, void*)) {
 	LinkedList* list = Ll_createNewEmpty();
 	list->comparator = comparer;
 	return list;
 }
 
-void Ll_addFirst(LinkedList* list, const void* value) {
+void Ll_addFirst(LinkedList* list, void* value) {
 	Ll_Node* newFirst = (Ll_Node*) malloc(sizeof(Ll_Node));
 	newFirst->chld = list->head;
 	newFirst->val = value;
@@ -30,7 +30,7 @@ void Ll_addFirst(LinkedList* list, const void* value) {
 	}
 }
 
-void Ll_addLast(LinkedList* list, const void* element) {
+void Ll_addLast(LinkedList* list, void* element) {
 	Ll_Node* newLast =  (Ll_Node*) malloc(sizeof(Ll_Node));
 	newLast->chld = NULL;
 	newLast->val = element;
@@ -45,12 +45,12 @@ void Ll_addLast(LinkedList* list, const void* element) {
 	list->len++;
 }
 
-void Ll_addAt(LinkedList* list, const uint index, const void* element) {
+void Ll_addAt(LinkedList* list, const uint index, void* element) {
 	if (index >= list->len) { Ll_addLast(list, element); }
 	else {
 		Ll_Node* pre_index = list->head;
 
-		for (int i = 1; i < index; i++) {
+		for (uint i = 1; i < index; i++) {
 			pre_index = pre_index->chld;
 		}
 
@@ -86,7 +86,7 @@ void* Ll_removeLast(LinkedList* list) {
 	}
 	else {
 		Ll_Node* actual = list->head;
-		for (int i = 1; i < list->len-1; i++) {
+		for (uint i = 1; i < list->len-1; i++) {
 			actual = actual->chld;
 		}
 		target = list->tail;
@@ -103,7 +103,7 @@ void* Ll_removeElementAt(LinkedList* list, const uint index) {
 	if (index == list->len - 1) { return Ll_removeLast(list); }
 
 	Ll_Node* actual = list->head;
-	for (size_t i = 1; i < index; i++) {
+	for (uint i = 1; i < index; i++) {
 		actual = actual->chld;
 	}
 
@@ -129,8 +129,8 @@ void Ll_clear(LinkedList* list) {
 	list->len = 0;
 }
 
-Bool Ll_contains(LinkedList* list, const void* value) {
-	if (list->comparator == NULL) { return; }
+Bool Ll_contains(LinkedList* list, void* value) {
+	if (list->comparator == NULL) { return 0; }
 
 	Ll_Node* current = list->head;
 	while (current != NULL) {
@@ -144,7 +144,7 @@ void* Ll_getElementFrom(LinkedList* list, const uint index) {
 	if (index >= list->len) { return NULL; }
 
 	Ll_Node* current = list->head;
-	for (size_t i = 0; i < index; i++) { current = current->chld; }
+	for (uint i = 0; i < index; i++) { current = current->chld; }
 	return current->val;
 }
 
@@ -152,7 +152,7 @@ Bool Ll_isEmpty(LinkedList* list) {
 	return (list->len == 0);
 }
 
-int Ll_indexOf(LinkedList* list, const void* element) {
+int Ll_indexOf(LinkedList* list, void* element) {
 	if (list->comparator == NULL) { return -1; }
 
 	Ll_Node* current = list->head;
@@ -165,7 +165,7 @@ int Ll_indexOf(LinkedList* list, const void* element) {
 	return -1;
 }
 
-int Ll_lastIndexOf(LinkedList* list, const void* element) {
+int Ll_lastIndexOf(LinkedList* list, void* element) {
 	if (list->comparator == NULL) { return -1; }
 
 	Ll_Node* current = list->head;
@@ -179,13 +179,13 @@ int Ll_lastIndexOf(LinkedList* list, const void* element) {
 	return lastIndex;
 }
 
-void* Ll_setElementAt(LinkedList* list, const uint index, const void* element) {
+void* Ll_setElementAt(LinkedList* list, const uint index, void* element) {
 	if (index >= list->len) { return NULL; }
 	
 	Ll_Node* current = list->head;
 	void* oldValue;
 
-	for (size_t i = 0; i < index; i++) { current = current->chld; }
+	for (uint i = 0; i < index; i++) { current = current->chld; }
 	oldValue = current->val;
 	current->val = element;
 	return oldValue;
