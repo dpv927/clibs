@@ -1,8 +1,8 @@
 ## Content
 Data Structures:
-  - <a href="https://github.com/dpv927/clibs/tree/main/linked_list">Linked List<a>
-  - <a href="https://github.com/dpv927/clibs/tree/main/queue">Queue<a>
-  - <a href="https://github.com/dpv927/clibs/tree/main/arraylist">ArrayList (In Progress)<a>
+  - <a href="https://github.com/dpv927/clibs/tree/main/LinkedList">Linked List<a>
+  - <a href="https://github.com/dpv927/clibs/tree/main/Queue">Queue<a>
+  - <a href="https://github.com/dpv927/clibs/tree/main/ArrayList">ArrayList (In Progress)<a>
   
  ## Doucumentation
 All the code is documented, both in the source files and in the <a href="https://github.com/dpv927/clibs/wiki">Wiki</a>. For a better understanding of the every tool usage, **it is strongly advised to read the Wiki**.
