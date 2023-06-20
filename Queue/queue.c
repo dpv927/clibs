@@ -19,6 +19,6 @@ int Q_isEmpty(Queue* queue) {
 	return Ll_isEmpty(queue->list);
 }
 
-void Q_clear(Queue* queue) {
-	Ll_clear(queue->list);
+void Q_clear(Queue* queue, void(*clrfun)(void*)) {
+	Ll_clear(queue->list, clrfun);
 }

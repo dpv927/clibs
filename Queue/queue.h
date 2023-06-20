@@ -1,5 +1,5 @@
 #pragma once
-#include "../linked_list/linkedList.h"
+#include "../LinkedList/linkedList.h"
 
 
 typedef struct Queue Queue;
@@ -37,6 +37,10 @@ int Q_isEmpty(Queue* queue);
 
 /**
  * @brief Clears the queue, removing all elements.
- *
- * @param list Pointer to the queue. **/
-void Q_clear(Queue* queue);
+ * 
+ * @param list Pointer to the queue.
+ * @param clrfun Pointer to a function that frees the memory from
+ * the type of data that is storaged in the Queue. It must be NULL if 
+ * the stored data is not allocated with malloc, realloc, etc.
+ * **/
+void Q_clear(Queue* queue, void(*clrfun)(void*));

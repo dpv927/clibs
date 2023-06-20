@@ -130,5 +130,6 @@ Bool Al_trimToSize(ArrayList* list);
  * @brief Clears the ArrayList, removing all elements.
  *
  * @param list The ArrayList to clear.
+ * 
  * @return True if the ArrayList was successfully cleared, False otherwise. **/
-Bool Al_clear(ArrayList* list);
+Bool Al_clear(ArrayList* list, void(*clrfun)(void*));

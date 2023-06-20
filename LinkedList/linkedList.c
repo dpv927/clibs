@@ -113,17 +113,31 @@ void* Ll_removeElementAt(LinkedList* list, const uint index) {
 	return target->val;
 }
 
-void Ll_clear(LinkedList* list) {
+void Ll_clear(LinkedList* list, void(*clrfun)(void*)) {
 	if (list->len == 0) return;
 
 	Ll_Node* current = list->head;
 	Ll_Node* next;
 
-	while (current != NULL) {
-		next = current->chld;
-		free(current);
-		current = next;
-	}
+  if(clrfun == NULL) {
+    // Non-heap objects 
+    while (current != NULL) {
+		  next = current->chld;
+      free(current);
+		  current = next;
+  	}
+  }
+  else {
+    // Heap objects: allocated by malloc, 
+    // realloc, or any similar.
+    while (current != NULL) {
+		  next = current->chld;
+		  clrfun(current->val);
+      free(current);
+		  current = next;
+	  }  
+  }
+
 	list->head = NULL;
 	list->tail = NULL;
 	list->len = 0;

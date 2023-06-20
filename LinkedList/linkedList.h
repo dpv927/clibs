@@ -75,10 +75,14 @@ void* Ll_removeLast(LinkedList* list);
 void* Ll_removeElementAt(LinkedList* list, const uint index);
 
 /**
- * @brief Clears the linked list, removing all elements.
- *
- * @param list Pointer to the linked list. **/
-void Ll_clear(LinkedList* list);
+ * @brief Clears the linked list, removing all elements and freeing all the 
+ * allocated memory if necessary.
+ * 
+ * @param list Pointer to the linked list. 
+ * @param clrfun Pointer to a function that frees the memory of the type
+ * of data that is being stored in the list. This pointer must be NULL if the stored
+ * data is not being allocated with a function like malloc, realloc, etc.**/
+void Ll_clear(LinkedList* list, void(*clrfun)(void*));
 
 /**
  * @brief Checks if the linked list contains a specific element.

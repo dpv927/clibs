@@ -27,25 +27,25 @@ ArrayList* Al_createNew() {
 	return Al_createNewSized(DEF_ARL_SIZE);
 }
 
-ArrayList* Al_createNewComparable(const int(*comparer)(void*, void*)) {
+ArrayList* Al_createNewComparable(int(*comparer)(void*, void*)) {
 	ArrayList* list = Al_createNewSized(DEF_ARL_SIZE);
 	list->comparator = comparer;
 	return list;
 }
 
-ArrayList* Al_createNewComparableSized(const int(*comparer)(void*, void*), const uint size) {
+ArrayList* Al_createNewComparableSized(int(*comparer)(void*, void*), const uint size) {
 	ArrayList* list = Al_createNewSized(size);
 	list->comparator = comparer;
 	return list;
 }
 
-Bool Al_add(ArrayList* list, const void* element) {
+Bool Al_add(ArrayList* list, void* element) {
 	if (Al_ensureCapacity(list)) { return CODE_ERR; }
 	list->data[list->len++] = element;
 	return CODE_GDD;
 }
 
-Bool Al_addAt(ArrayList* list, const void* element, const uint index) {
+Bool Al_addAt(ArrayList* list, void* element, const uint index) {
 	if (index > list->len || Al_ensureCapacity(list)) {
 		return CODE_ERR;
 	}
@@ -58,7 +58,7 @@ Bool Al_addAt(ArrayList* list, const void* element, const uint index) {
 	return CODE_GDD;
 }
 
-void* Al_remove(ArrayList* list, const void* element) {
+void* Al_remove(ArrayList* list, void* element) {
 	if (list->comparator == NULL) { return NULL; }
 
 	void** removed = NULL;
@@ -98,7 +98,7 @@ void* Al_get(const ArrayList* list, const uint index) {
 	return list->data[index];
 }
 
-int Al_indexOf(const ArrayList* list, const void* element) {
+int Al_indexOf(const ArrayList* list, void* element) {
 	if (list->comparator == NULL) { return -1; }
 
 	for (uint i = 0; i < list->len; i++) {
@@ -109,7 +109,7 @@ int Al_indexOf(const ArrayList* list, const void* element) {
 	return -1;
 }
 
-int Al_lastIndexOf(const ArrayList* list, const void* element) {
+int Al_lastIndexOf(const ArrayList* list, void* element) {
 	if (list->comparator == NULL) { return -1; }
 
 	int index = -1;
@@ -121,7 +121,7 @@ int Al_lastIndexOf(const ArrayList* list, const void* element) {
 	return index;
 }
 
-Bool Al_contains(const ArrayList* list, const void* element) {
+Bool Al_contains(const ArrayList* list, void* element) {
 	if (list->comparator == NULL) { return 0; }
 	for (uint i = 0; i < list->len; i++) {
 		if (list->comparator(list->data[i], element) == 0) {
@@ -139,7 +139,7 @@ Bool Al_ensureCapacity(ArrayList* list) {
 		uint minGrowth = (list->len + 1) - oldLength;
 		uint prefGrowth = oldLength >> 1;
 
-		uint prefLength = oldLength + (minGrowth > prefGrowth)? minGrowth : prefGrowth;
+		uint prefLength = oldLength + ((minGrowth > prefGrowth)? minGrowth : prefGrowth);
 		prefLength = (prefLength > INT_MAX) ? INT_MAX : prefLength;
 
 		// Reallocate the old arr at a bigger spot
@@ -166,11 +166,19 @@ Bool Al_trimToSize(ArrayList* list) {
 	return CODE_GDD;
 }
 
-Bool Al_clear(ArrayList* list) {
+Bool Al_clear(ArrayList* list, void(*clrfun)(void*)) {
 	if (list == NULL || list->data == NULL) { return CODE_ERR; }
 
-	for (uint i = 0; i < list->len; i++)
-		free(list->data[i]);
+  if(clrfun == NULL) {
+    // Non-heap objects
+    for (uint i = 0; i < list->len; i++)
+		  list->data[i] = NULL;
+  } else {
+    // Heap objects: allocated by malloc, 
+    // realloc, etc.
+    for (uint i = 0; i < list->len; i++)
+		  clrfun(list->data[i]);
+  }
 	list->len = 0;
 
 	void** new_data = (void**) realloc(list->data, sizeof(void*) * DEF_ARL_SIZE);
