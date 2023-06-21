@@ -16,7 +16,7 @@ To run those tests, you first have to compile them and the run the generated exe
 # You can do it all with Make
 make clean all test
 
-# Or by Make and another command
-make clean all
-./exec
+# You can do it with CMake
+cmake . # Be sure of executing this command at /tests
+make
 ```
