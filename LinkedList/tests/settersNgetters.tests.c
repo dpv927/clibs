@@ -21,13 +21,13 @@ void test_Ll_getElementFrom() {
         *(int*)Ll_getElementFrom(list, 1) != b ||
         *(int*)Ll_getElementFrom(list, 2) != c) {
         printf("Failed test: Ll_getElementFrom() did not return the correct elements.\n");
-        Ll_clear(list);
+        Ll_clear(list, NULL);
         free(list);
         exit(-1);
     }
 
     printf("Successful test: Ll_getElementFrom() returned the correct elements.\n");
-    Ll_clear(list);
+    Ll_clear(list, NULL);
     free(list);
 }
 
@@ -58,12 +58,12 @@ void test_Ll_setElementAt() {
         *(int*)Ll_getElementFrom(list, 1) != y ||
         *(int*)Ll_getElementFrom(list, 2) != z) {
         printf("Failed test: Ll_setElementAt() did not update the elements correctly.\n");
-        Ll_clear(list);
+        Ll_clear(list, NULL);
         free(list);
         exit(-1);
     }
 
     printf("Successful test: Ll_setElementAt() updated the elements correctly.\n");
-    Ll_clear(list);
+    Ll_clear(list, NULL);
     free(list);
 }

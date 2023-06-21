@@ -34,7 +34,7 @@ void test_Ll_lastIndexOf() {
         Ll_lastIndexOf(list, &b) != 1 ||
         Ll_lastIndexOf(list, &c) != 2) {
         printf("Failed test: Ll_lastIndexOf() did not return the correct results.\n");
-        Ll_clear(list);
+        Ll_clear(list, NULL);
         free(list);
         exit(-1);
     }
@@ -43,14 +43,13 @@ void test_Ll_lastIndexOf() {
     int d = 3;
     if (Ll_lastIndexOf(list, &d) != -1) {
         printf("Failed test: Ll_lastIndexOf() did not return the correct result for element not in the list.\n");
-        Ll_clear(list);
+        Ll_clear(list, NULL);
         free(list);
         exit(-1);
     }
 
     printf("Successful test: Ll_lastIndexOf() returned the correct results.\n");
-
-    Ll_clear(list);
+    Ll_clear(list, NULL);
     free(list);
 }
 
@@ -72,7 +71,7 @@ void test_Ll_indexOf() {
         Ll_indexOf(list, &b) != 1 ||
         Ll_indexOf(list, &c) != 0) {
         printf("Failed test: Ll_indexOf() did not return the correct results.\n");
-        Ll_clear(list);
+        Ll_clear(list, NULL);
         free(list);
         exit(-1);
     }
@@ -81,13 +80,12 @@ void test_Ll_indexOf() {
     int d = 3;
     if (Ll_indexOf(list, &d) != -1) {
         printf("Failed test: Ll_indexOf() did not return the correct result for element not in the list.\n");
-        Ll_clear(list);
+        Ll_clear(list, NULL);
         free(list);
         exit(-1);
     }
 
     printf("Successful test: Ll_indexOf() returned the correct results.\n");
-
-    Ll_clear(list);
+    Ll_clear(list, NULL);
     free(list);
 }

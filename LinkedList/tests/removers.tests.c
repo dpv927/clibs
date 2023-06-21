@@ -19,7 +19,7 @@ void test_Ll_removeFirst() {
     // Verify the list content before removing the first element
     if (list->len != 3 || *(int*)list->head->val != a || *(int*)list->tail->val != c) {
         printf("Failed test: Ll_removeFirst() did not initialize the list correctly.\n");
-        Ll_clear(list);
+        Ll_clear(list, NULL);
         free(list);
         exit(-1);
     }
@@ -30,14 +30,13 @@ void test_Ll_removeFirst() {
     // Verify the list content after removing the first element
     if (list->len != 2 || *(int*)list->head->val != b || *(int*)list->tail->val != c || *(int*)removed != a) {
         printf("Failed test: Ll_removeFirst() did not remove the first element correctly.\n");
-        Ll_clear(list);
+        Ll_clear(list, NULL);
         free(list);
         exit(-1);
     }
 
     printf("Successful test: Ll_removeFirst() removed the first element correctly.\n");
-
-    Ll_clear(list);
+    Ll_clear(list, NULL);
     free(list);
 }
 
@@ -57,7 +56,7 @@ void test_Ll_removeLast() {
     // Verify the list content before removing the last element
     if (list->len != 3 || *(int*)list->head->val != a || *(int*)list->tail->val != c) {
         printf("Failed test: Ll_removeLast() did not initialize the list correctly.\n");
-        Ll_clear(list);
+        Ll_clear(list, NULL);
         free(list);
         exit(-1);
     }
@@ -68,14 +67,13 @@ void test_Ll_removeLast() {
     // Verify the list content after removing the last element
     if (list->len != 2 || *(int*)list->head->val != a || *(int*)list->tail->val != b || *(int*)removed != c) {
         printf("Failed test: Ll_removeLast() did not remove the last element correctly.\n");
-        Ll_clear(list);
+        Ll_clear(list, NULL);
         free(list);
         exit(-1);
     }
 
     printf("Successful test: Ll_removeLast() removed the last element correctly.\n");
-
-    Ll_clear(list);
+    Ll_clear(list, NULL);
     free(list);
 }
 
@@ -95,7 +93,7 @@ void test_Ll_removeElementAt() {
     // Verify the list content before removing the element at index 1
     if (list->len != 3 || *(int*)list->head->val != a || *(int*)list->tail->val != c) {
         printf("Failed test: Ll_removeElementAt() did not initialize the list correctly.\n");
-        Ll_clear(list);
+        Ll_clear(list, NULL);
         free(list);
         exit(-1);
     }
@@ -106,14 +104,13 @@ void test_Ll_removeElementAt() {
     // Verify the list content after removing the element at index 1
     if (list->len != 2 || *(int*)list->head->val != a || *(int*)list->tail->val != c || *(int*)removed != b) {
         printf("Failed test: Ll_removeElementAt() did not remove the element at index %d correctly.\n", index);
-        Ll_clear(list);
+        Ll_clear(list, NULL);
         free(list);
         exit(-1);
     }
 
     printf("Successful test: Ll_removeElementAt() removed the element at index %d correctly.\n", index);
-
-    Ll_clear(list);
+    Ll_clear(list, NULL);
     free(list);
 }
 

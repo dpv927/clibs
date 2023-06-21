@@ -17,7 +17,7 @@ void test_Ll_clear() {
     Ll_addLast(list, &c);
 
     // Clear the list
-    Ll_clear(list);
+    Ll_clear(list, NULL);
 
     // Verify that the list is empty
     if (list->len != 0 || list->head != NULL || list->tail != NULL) {
@@ -62,7 +62,7 @@ void test_Ll_contains() {
         Ll_contains(list, &c) != 1 ||
         Ll_contains(list, &b) != 1) {
         printf("Failed test: Ll_contains() did not return the correct results.\n");
-        Ll_clear(list);
+        Ll_clear(list, NULL);
         free(list);
         exit(-1);
     }
@@ -71,14 +71,13 @@ void test_Ll_contains() {
     int d = 4;
     if (Ll_contains(list, &d) != 0) {
         printf("Failed test: Ll_contains() did not return the correct result for element not in the list.\n");
-        Ll_clear(list);
+        Ll_clear(list, NULL);
         free(list);
         exit(-1);
     }
 
     printf("Successful test: Ll_contains() returned the correct results.\n");
-
-    Ll_clear(list);
+    Ll_clear(list, NULL);
     free(list);
 }
 
@@ -100,13 +99,12 @@ void test_Ll_isEmpty() {
     // Verify that the list is not empty
     if (Ll_isEmpty(list) != 0) {
         printf("Failed test: Ll_isEmpty() did not return the correct result for a non-empty list.\n");
-        Ll_clear(list);
+        Ll_clear(list, NULL);
         free(list);
         exit(-1);
     }
 
     printf("Successful test: Ll_isEmpty() returned the correct results.\n");
-
-    Ll_clear(list);
+    Ll_clear(list, NULL);
     free(list);
 }

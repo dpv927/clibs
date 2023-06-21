@@ -28,17 +28,17 @@ void test_Ll_addFirst() {
       printf("Successful test: Ll_addFirst() added elements to the beginning of the list correctly.\n");
     } else {
       printf("Failed test: Ll_addFirst() did not add elements to the beginning of the list correctly.\n");
-      Ll_clear(list);
+      Ll_clear(list, NULL);
       free(list);
       exit(-1);
     }
   } else {
     printf("Failed test: Ll_addFirst() did not update the list properties correctly.\n");
-    Ll_clear(list);
+    Ll_clear(list, NULL);
     free(list);
     exit(-1);
   }
-  Ll_clear(list);
+  Ll_clear(list, NULL);
   free(list);
 }
 
@@ -67,17 +67,17 @@ void test_Ll_addLast() {
       printf("Successful test: Ll_addLast() added elements to the end of the list correctly.\n");
     } else {
       printf("Failed test: Ll_addLast() did not add elements to the end of the list correctly.\n");
-      Ll_clear(list);
+      Ll_clear(list, NULL);
       free(list);
       exit(-1);
     }
   } else {
     printf("Failed test: Ll_addLast() did not update the list properties correctly.\n");
-    Ll_clear(list);
+    Ll_clear(list, NULL);
     free(list);
     exit(-1);
   }
-  Ll_clear(list);
+  Ll_clear(list, NULL);
   free(list);
 }
 
@@ -106,16 +106,16 @@ void test_Ll_addAt() {
       printf("Successful test: Ll_addAt() added elements at specific indices in the list correctly.\n");
     } else {
       printf("Failed test: Ll_addAt() did not add elements at specific indices in the list correctly.\n");
-      Ll_clear(list);
+      Ll_clear(list, NULL);
       free(list);
       exit(-1);
     }
   } else {
     printf("Failed test: Ll_addAt() did not update the list properties correctly.\n");
-    Ll_clear(list);
+    Ll_clear(list, NULL);
     free(list);
     exit(-1);
   }
-  Ll_clear(list);
+  Ll_clear(list, NULL);
   free(list);
 }
