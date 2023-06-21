@@ -14,4 +14,4 @@ For each 'library' in this repository, a set of tests is available so that any u
 To run those tests, you first have to compile them and the run the generated executable:
 ```bash
 # You can do it all with Make
-make clean all test
+make clean test
