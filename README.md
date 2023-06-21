@@ -18,5 +18,5 @@ make clean all test
 
 # You can do it with CMake
 cmake . # Be sure of executing this command at /tests
-make
+make run
 ```
