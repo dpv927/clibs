@@ -15,8 +15,3 @@ To run those tests, you first have to compile them and the run the generated exe
 ```bash
 # You can do it all with Make
 make clean all test
-
-# You can do it with CMake
-cmake . # Be sure of executing this command at /tests
-make run
-```
