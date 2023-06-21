@@ -14,6 +14,8 @@ LinkedList* Ll_createNewEmpty(void) {
 
 LinkedList* Ll_createNewComparable(int(*comparer)(void*, void*)) {
 	LinkedList* list = Ll_createNewEmpty();
+  if(list == NULL) { return NULL; }
+
 	list->comparator = comparer;
 	return list;
 }
